@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" data-theme="1">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A calculator app with three switchable color themes, built with vanilla JavaScript and CSS."
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+
+    <title>Frontend Mentor | Calculator app</title>
+  </head>
+  <body>
+    <main id="calculator-app">
+      <!-- Header: Title + Theme Toggle -->
+      <header id="calculator-header">
+        <h1 id="calculator-title">calc</h1>
+
+        <div id="theme-switcher" role="radiogroup" aria-label="Theme selector">
+          <span id="theme-label">THEME</span>
+          <div id="theme-toggle-wrapper">
+            <div id="theme-numbers">
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+            </div>
+            <div id="theme-track">
+              <button
+                id="theme-option-1"
+                class="theme-option"
+                role="radio"
+                aria-checked="true"
+                aria-label="Theme 1"
+                data-theme-value="1"
+              ></button>
+              <button
+                id="theme-option-2"
+                class="theme-option"
+                role="radio"
+                aria-checked="false"
+                aria-label="Theme 2"
+                data-theme-value="2"
+              ></button>
+              <button
+                id="theme-option-3"
+                class="theme-option"
+                role="radio"
+                aria-checked="false"
+                aria-label="Theme 3"
+                data-theme-value="3"
+              ></button>
+              <span id="theme-indicator"></span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Display -->
+      <section
+        id="calculator-screen"
+        aria-live="polite"
+        aria-label="Calculator display"
+      >
+        <output id="display-value">0</output>
+      </section>
+
+      <!-- Keypad -->
+      <section id="calculator-keypad" aria-label="Calculator keypad">
+        <button id="key-7" class="key key-number" data-value="7">7</button>
+        <button id="key-8" class="key key-number" data-value="8">8</button>
+        <button id="key-9" class="key key-number" data-value="9">9</button>
+        <button id="key-del" class="key key-action" data-value="del">
+          DEL
+        </button>
+
+        <button id="key-4" class="key key-number" data-value="4">4</button>
+        <button id="key-5" class="key key-number" data-value="5">5</button>
+        <button id="key-6" class="key key-number" data-value="6">6</button>
+        <button id="key-add" class="key key-number" data-value="+">+</button>
+
+        <button id="key-1" class="key key-number" data-value="1">1</button>
+        <button id="key-2" class="key key-number" data-value="2">2</button>
+        <button id="key-3" class="key key-number" data-value="3">3</button>
+        <button id="key-subtract" class="key key-number" data-value="-">
+          -
+        </button>
+
+        <button id="key-decimal" class="key key-number" data-value=".">
+          .
+        </button>
+        <button id="key-0" class="key key-number" data-value="0">0</button>
+        <button id="key-divide" class="key key-number" data-value="/">/</button>
+        <button id="key-multiply" class="key key-number" data-value="x">
+          x
+        </button>
+
+        <button
+          id="key-reset"
+          class="key key-action key-wide"
+          data-value="reset"
+        >
+          RESET
+        </button>
+        <button id="key-equals" class="key key-equals key-wide" data-value="=">
+          =
+        </button>
+      </section>
+    </main>
+
+    <footer id="attribution">
+      Challenge by
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        target="_blank"
+        rel="noopener"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Marc Ryan Dela Cruz</a>.
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

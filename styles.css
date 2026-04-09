@@ -1,0 +1,364 @@
+/* ============================================================
+   Calculator App — Stylesheet
+   Vanilla CSS with custom properties for 3-theme switching.
+   Font: League Spartan 700 (loaded via Google Fonts in HTML).
+   ============================================================ */
+
+/* ====== Theme 1 — Dark Navy ====== */
+[data-theme="1"] {
+  --main-bg: hsl(222, 26%, 31%);
+  --toggle-bg: hsl(223, 31%, 20%);
+  --screen-bg: hsl(224, 36%, 15%);
+
+  --key-bg: hsl(0, 0%, 90%);
+  --key-shadow: hsl(28, 16%, 65%);
+  --key-text: hsl(221, 14%, 31%);
+  --key-bg-hover: hsl(0, 0%, 100%);
+
+  --action-bg: hsl(225, 21%, 49%);
+  --action-shadow: hsl(224, 28%, 35%);
+  --action-text: hsl(0, 0%, 100%);
+  --action-bg-hover: hsl(225, 21%, 60%);
+
+  --equals-bg: hsl(6, 63%, 50%);
+  --equals-shadow: hsl(6, 70%, 34%);
+  --equals-text: hsl(0, 0%, 100%);
+  --equals-bg-hover: hsl(6, 63%, 60%);
+
+  --toggle-dot: hsl(6, 63%, 50%);
+  --title-text: hsl(0, 0%, 100%);
+  --screen-text: hsl(0, 0%, 100%);
+}
+
+/* ====== Theme 2 — Light ====== */
+[data-theme="2"] {
+  --main-bg: hsl(0, 0%, 90%);
+  --toggle-bg: hsl(0, 5%, 81%);
+  --screen-bg: hsl(0, 0%, 93%);
+
+  --key-bg: hsl(0, 0%, 90%);
+  --key-shadow: hsl(35, 11%, 61%);
+  --key-text: hsl(60, 10%, 19%);
+  --key-bg-hover: hsl(0, 0%, 100%);
+
+  --action-bg: hsl(185, 42%, 37%);
+  --action-shadow: hsl(185, 58%, 25%);
+  --action-text: hsl(0, 0%, 100%);
+  --action-bg-hover: hsl(185, 42%, 47%);
+
+  --equals-bg: hsl(25, 98%, 40%);
+  --equals-shadow: hsl(25, 99%, 27%);
+  --equals-text: hsl(0, 0%, 100%);
+  --equals-bg-hover: hsl(25, 98%, 50%);
+
+  --toggle-dot: hsl(25, 98%, 40%);
+  --title-text: hsl(60, 10%, 19%);
+  --screen-text: hsl(60, 10%, 19%);
+}
+
+/* ====== Theme 3 — Vivid Purple ====== */
+[data-theme="3"] {
+  --main-bg: hsl(268, 75%, 9%);
+  --toggle-bg: hsl(268, 71%, 12%);
+  --screen-bg: hsl(268, 71%, 12%);
+
+  --key-bg: hsl(268, 47%, 21%);
+  --key-shadow: hsl(290, 70%, 36%);
+  --key-text: hsl(52, 100%, 62%);
+  --key-bg-hover: hsl(268, 47%, 32%);
+
+  --action-bg: hsl(281, 89%, 26%);
+  --action-shadow: hsl(285, 91%, 52%);
+  --action-text: hsl(0, 0%, 100%);
+  --action-bg-hover: hsl(281, 89%, 36%);
+
+  --equals-bg: hsl(176, 100%, 44%);
+  --equals-shadow: hsl(177, 92%, 70%);
+  --equals-text: hsl(198, 20%, 13%);
+  --equals-bg-hover: hsl(176, 100%, 55%);
+
+  --toggle-dot: hsl(176, 100%, 44%);
+  --title-text: hsl(52, 100%, 62%);
+  --screen-text: hsl(52, 100%, 62%);
+}
+
+/* ====== Base Reset ====== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  background-color: var(--main-bg);
+  transition: background-color 0.35s ease;
+}
+
+/* ====== Calculator Container ====== */
+#calculator-app {
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  max-width: 540px;
+}
+
+/* ====== Header ====== */
+#calculator-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+#calculator-title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  letter-spacing: -1px;
+  color: var(--title-text);
+  transition: color 0.35s ease;
+}
+
+/* ---- Theme Switcher ---- */
+#theme-switcher {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.25rem;
+}
+
+#theme-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--title-text);
+  transition: color 0.35s ease;
+  margin-bottom: 4px;
+}
+
+#theme-toggle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#theme-numbers {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  color: var(--title-text);
+  font-size: 0.75rem;
+  transition: color 0.35s ease;
+}
+
+#theme-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 72px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: var(--toggle-bg);
+  transition: background-color 0.35s ease;
+}
+
+.theme-option {
+  flex: 1;
+  height: 100%;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  z-index: 2;
+}
+
+#theme-indicator {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--toggle-dot);
+  top: 5px;
+  left: 5px;
+  transition: left 0.3s ease, background-color 0.35s ease;
+  pointer-events: none;
+}
+
+/* Toggle dot positions per theme */
+[data-theme="1"] #theme-indicator { left: 5px; }
+[data-theme="2"] #theme-indicator { left: calc(50% - 8px); }
+[data-theme="3"] #theme-indicator { left: calc(100% - 21px); }
+
+/* ====== Display / Screen ====== */
+#calculator-screen {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--screen-bg);
+  transition: background-color 0.35s ease;
+  min-height: 88px;
+}
+
+#display-value {
+  text-align: right;
+  width: 100%;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  color: var(--screen-text);
+  transition: color 0.35s ease;
+  line-height: 1;
+  overflow-x: auto;
+  word-break: break-all;
+}
+
+/* ====== Keypad ====== */
+#calculator-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background-color: var(--toggle-bg);
+  transition: background-color 0.35s ease;
+}
+
+/* ====== Key Base ====== */
+.key {
+  cursor: pointer;
+  border: none;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  padding: 14px 4px 10px;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.35s ease,
+    transform 0.1s ease;
+}
+
+/* Number / operator keys */
+.key-number {
+  background-color: var(--key-bg);
+  box-shadow: 0 4px 0 var(--key-shadow);
+  color: var(--key-text);
+}
+
+.key-number:hover {
+  background-color: var(--key-bg-hover);
+}
+
+.key-number:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--key-shadow);
+}
+
+/* Action keys (DEL, RESET) */
+.key-action {
+  background-color: var(--action-bg);
+  box-shadow: 0 4px 0 var(--action-shadow);
+  color: var(--action-text);
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+
+.key-action:hover {
+  background-color: var(--action-bg-hover);
+}
+
+.key-action:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--action-shadow);
+}
+
+/* Equals key */
+.key-equals {
+  background-color: var(--equals-bg);
+  box-shadow: 0 4px 0 var(--equals-shadow);
+  color: var(--equals-text);
+  font-size: 1.5rem;
+}
+
+.key-equals:hover {
+  background-color: var(--equals-bg-hover);
+}
+
+.key-equals:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--equals-shadow);
+}
+
+/* Wide keys (RESET, =) — span 2 columns */
+.key-wide {
+  grid-column: span 2;
+}
+
+/* ====== Focus (keyboard a11y) ====== */
+.key:focus-visible {
+  outline: 3px solid var(--toggle-dot);
+  outline-offset: 2px;
+}
+
+.theme-option:focus-visible {
+  outline: 2px solid var(--toggle-dot);
+  outline-offset: 2px;
+}
+
+/* ====== Attribution ====== */
+#attribution {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.6875rem;
+  color: var(--title-text);
+  opacity: 0.6;
+  transition: color 0.35s ease;
+}
+
+#attribution a {
+  color: var(--toggle-dot);
+  text-decoration: underline;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 500px) {
+  #calculator-app {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #calculator-keypad {
+    gap: 0.75rem;
+    padding: 1.25rem;
+  }
+
+  .key {
+    font-size: 1.5rem;
+    padding: 12px 2px 8px;
+  }
+
+  .key-action {
+    font-size: 1.1rem;
+  }
+
+  .key-equals {
+    font-size: 1.25rem;
+  }
+
+  #calculator-screen {
+    padding: 1.5rem 1rem;
+    min-height: 72px;
+  }
+}
